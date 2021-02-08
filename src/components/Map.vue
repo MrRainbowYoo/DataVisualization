@@ -1,13 +1,7 @@
 <template>
-  <div class="content row-flex-start" style="min-width:1000px;ovorflow-x:auto;" v-loading.fullscreen.lock="fullscreenLoading">
+  <div class="content row-flex-start" style="min-width:450px;ovorflow-x:auto;" v-loading.lock="fullscreenLoading">
     <div class="left_map" id="left_map"  @click="showChinaMap"></div>
     <div class="right_opetate row-center" id="right_opetate"></div>
-<!--    <el-button-->
-<!--      type="primary"-->
-<!--      @click="openFullScreen1"-->
-<!--      v-loading.fullscreen.lock="fullscreenLoading">-->
-<!--      指令方式-->
-<!--    </el-button>-->
   </div>
 </template>
 
@@ -55,7 +49,7 @@
           title: {
             text: "中国新冠肺炎疫情地图",
             subtext: '中国各省份现有确诊病例',
-            left: "center"
+            top: '5%'
           },
           tooltip: {
             trigger: 'item',
@@ -67,7 +61,7 @@
             left: 'right',
             top: 'center',
             feature: {
-              dataView: {readOnly: true},
+              // dataView: {readOnly: true},
               saveAsImage: {}
             }
           },
@@ -86,7 +80,9 @@
               color: ['#efefef', '#f3070a'],
             },
             pieces: [
-              {min: 21, max: 100, label: '> 21'}, // 不指定 max，表示 max 为无限大（Infinity）。
+              {min: 501, max: 1000, label: '> 500'},
+              {min: 101, max: 500},
+              {min: 21, max: 100}, // 不指定 max，表示 max 为无限大（Infinity）。
               {min: 16, max: 20},
               {min: 11, max: 15},
               {min: 6, max: 10, label: '6 - 10'},
@@ -109,7 +105,8 @@
               color: ['#efefef', '#f3070a'],
             },
             pieces: [
-              {min: 101, max: 999, label: '> 101'}, // 不指定 max，表示 max 为无限大（Infinity）。
+              {min: 501, max: 999, label: '> 500'},
+              {min: 101, max: 500}, // 不指定 max，表示 max 为无限大（Infinity）。
               {min: 51, max: 100},
               {min: 21, max: 50},
               {min: 11, max: 20, label: '11 - 20'},
@@ -206,7 +203,10 @@
             this.$message.error('该地区暂不支持哦');
             return;
           }
+
+          //执行这句 在点击省份的时候 布局会乱掉
           this.openFullScreen1()
+
           this.getCityData(param.name,provinceAlphabet)
           // 重新渲染各省份地图
           this.getProvinceMapOpt(provinceAlphabet,param.name)
@@ -263,8 +263,8 @@
 
 <style>
   .left_map {
-    width: 50%;
-    height: 500px;
+    width: 100%;
+    height: 400px;
     margin: 0 auto;
     /*border: 1px solid #333333;*/
   }

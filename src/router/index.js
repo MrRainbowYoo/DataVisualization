@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import China from "../components/China";
-import Zhejiang from "../components/provinces/Zhejiang";
+import TimeLine from "../components/TimeLine";
 import Map from "../components/Map";
+import RankPie from "../components/RankPie";
+import RankBar from "../components/RankBar";
 
 Vue.use(Router)
 
@@ -14,20 +15,25 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
-    // {
-    //   path: '/china',
-    //   name: 'China',
-    //   component: China
-    // },
-    // {
-    //   path: '/zhejiang',
-    //   name: 'Zhejiang',
-    //   component: Zhejiang
-    // },
     {
       path: '/map',
       name: 'Map',
       component: Map
+    },
+    {
+      path: '/timeline',
+      name: 'TimeLine',
+      component: TimeLine
+    },
+    {
+      path: '/rankpie',
+      name: 'RankPie',
+      component: RankPie
+    },
+    {
+      path: '/rankbar',
+      name: 'RankBar',
+      component: RankBar
     }
   ]
 })
